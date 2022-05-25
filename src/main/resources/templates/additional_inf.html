@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Дополнительная информация</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <h1>Дополнительная информация</h1>
+    <form action="#" th:action="@{/scoring/add_additional_inf}" th:object="${client}" method="POST">
+        <div class="row">
+            <label class="form-check-label" for="marital">
+                Состоите в браке
+            </label>
+            <input class="form-check-input" type="checkbox" th:checked="*{marital}" th:field="*{marital}" id="marital">
+        </div>
+
+        <div class="row">
+            <label class="form-label" for="dependents">Количество иждивенцев</label>
+            <input type="text" onkeyup="this.value = this.value.replace(/[^\d]/g,'')" th:field="*{dependents}" id="dependents"
+                   placeholder="Наличие иждивенцев" class="form-control mb-4 col-4">
+        </div>
+
+        <div class="row">
+            <label class="form-check-label" for="ownHousing">
+                Наличие собственного жилья
+            </label>
+            <input class="form-check-input mb-4 col-4" type="checkbox" th:checked="*{ownHousing}" th:field="*{ownHousing}" id="ownHousing">
+        </div>
+
+        <button type="submit" class="btn btn-info mb-4 col-2">Продолжить</button>
+    </form>
+</div>
+</body>
+</html>

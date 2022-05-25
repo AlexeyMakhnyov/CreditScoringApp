@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Паспортные данные</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <h1>Паспортные данные</h1>
+    <form action="#" th:action="@{/scoring/add_passport_details}" th:object="${client}" method="POST">
+        <label class="form-label" for="passportSeries">Серия паспорта</label>
+        <input type="text" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" th:field="*{passportSeries}" id="passportSeries"
+               class="form-control mb-4 col-4">
+        <div th:if = "${#fields.hasErrors('passportSeries')}" th:errors="*{passportSeries}"></div>
+
+        <label class="form-label" for="passportId">Номер паспорта</label>
+        <input type="text" onkeyup="this.value = this.value.replace(/[^\d]/g,'')" th:field="*{passportId}" id="passportId"
+               class="form-control mb-4 col-4">
+        <div th:if = "${#fields.hasErrors('passportId')}" th:errors="*{passportId}"></div>
+
+        <label class="form-label" for="dob">Дата рождения</label>
+<!--        /*date*/-->
+        <input type="text" th:field="*{dob}" id="dob"
+               placeholder="11/07/2000" class="form-control mb-4 col-4">
+
+        <label class="form-label" for="gender">Пол</label>
+        <select th:field="*{gender}" class="form-select mb-4 col-4" id="gender">
+            <option th:each="gen : ${gen}"
+                    th:value="${gen.getId()}" th:text="${gen.getGender()}"></option>
+        </select>
+        <label class="form-label" for="registration">Место регирстрации</label>
+        <input type="text" th:field="*{registration}"
+               placeholder="Место регистрации" class="form-control mb-4 col-4" id="registration">
+        <div th:if = "${#fields.hasErrors('registration')}" th:errors="*{registration}"></div>
+
+        <button type="submit" class="btn btn-info col-2">Продолжить</button>
+    </form>
+</div>
+</body>
+</html>

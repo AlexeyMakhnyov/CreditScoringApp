@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Место работы</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <h1>Место работы</h1>
+    <form action="#" th:action="@{/scoring/add_work_place}" th:object="${client}" method="POST">
+        <label class="form-label" for="education">Образование</label>
+        <select th:field="*{education}" class="form-select mb-4 col-4" id="education">
+            <option th:each="edu : ${edu}"
+                    th:value="${edu.getId()}" th:text="${edu.getType()}"></option>
+        </select>
+
+        <label class="form-label" for="workPlace">Место работы</label>
+        <input type="text" th:field="*{workPlace}" id="workPlace"
+               placeholder="Место работы" class="form-control mb-4 col-4">
+        <div th:if = "${#fields.hasErrors('workPlace')}" th:errors="*{workPlace}"></div>
+
+        <label class="form-label" for="position">Должность</label>
+        <select th:field="*{position}" class="form-select mb-4 col-4" id="position">
+            <option th:each="pos : ${pos}"
+                    th:value="${pos.getId()}" th:text="${pos.getType()}"></option>
+        </select>
+
+        <label class="form-label" for="experience">Опыт работы</label>
+        <input type="text" onkeyup="this.value = this.value.replace(/[^\d]/g,'')" th:field="*{experience}" id="experience"
+               placeholder="Опыт работы" class="form-control mb-4 col-4">
+        <div th:if = "${#fields.hasErrors('experience')}" th:errors="*{experiece}"></div>
+
+        <label class="form-label" for="income">Доход</label>
+        <input type="text" onkeyup="this.value = this.value.replace(/[^\d]/g,'')" th:field="*{income}" id="income"
+               placeholder="Доход" class="form-control mb-4 col-4">
+        <div th:if = "${#fields.hasErrors('income')}" th:errors="*{income}"></div>
+
+        <button type="submit" class="btn btn-info col-2">Продолжить</button>
+    </form>
+</div>
+</body>
+</html>

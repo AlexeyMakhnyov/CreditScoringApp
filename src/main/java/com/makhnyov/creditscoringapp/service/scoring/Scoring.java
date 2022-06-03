@@ -38,7 +38,7 @@ public class Scoring {
     private double scoring(Client client, Credit credit) {
         //получение весовых коэффициентов
         Odds odds = oddsService.getOdds(1);
-        //формула линейной регрессии
+        //формула линейной регрессии p = k1 + k2*b1 ...
         double p = odds.getIntercept() + odds.getAge() * client.getAge() + odds.getDependents() * client.getDependents() +
                 odds.getExperience() * client.getExperience() + odds.getGender() * client.getGender().getGenderLe() +
                 odds.getIncome() * client.getIncome().doubleValue() + odds.getMonthlyPayment() * credit.getMonthlyPayment().doubleValue() +

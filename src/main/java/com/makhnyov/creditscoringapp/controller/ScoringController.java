@@ -18,8 +18,6 @@ import java.util.List;
 @RequestMapping("/scoring")
 public class ScoringController {
 
-
-
     private final GenderService genderService;
     private final EducationService educationService;
     private final CreditTermService creditTermService;
@@ -167,6 +165,8 @@ public class ScoringController {
         //валидация формы
         if (bindingResult.hasFieldErrors("passportSeries") || bindingResult.hasFieldErrors("passportId") || bindingResult.hasFieldErrors("registration")) {
             model.addAttribute("client");
+            List<Gender> genders = genderService.getAllGenders();
+            model.addAttribute("gen", genders);
             return "passport_details";
         }
         return "redirect:/scoring/work_place";
@@ -179,6 +179,12 @@ public class ScoringController {
         //валидация формы
         if (bindingResult.hasFieldErrors("workPlace") || bindingResult.hasFieldErrors("experience") || bindingResult.hasFieldErrors("income")) {
             model.addAttribute("client");
+            //получение из базы возможные значения образования
+            List<Education> educations = educationService.getAllEducations();
+            model.addAttribute("edu", educations);
+            //получение из базы возможные занимаемые должности
+            List<Position> positions = positionService.getAllPosition();
+            model.addAttribute("pos", positions);
             return "work_place";
         }
         return "redirect:/scoring/additional_inf";

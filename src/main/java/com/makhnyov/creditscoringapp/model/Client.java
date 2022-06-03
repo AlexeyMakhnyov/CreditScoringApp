@@ -3,12 +3,15 @@ package com.makhnyov.creditscoringapp.model;
 import com.makhnyov.creditscoringapp.service.crypto.CryptoConvertor;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.validator.constraints.Length;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.Date;
 import java.util.List;
 
 @Setter
@@ -23,12 +26,12 @@ public class Client {
 
     @Column(name = "full_name")
     @Convert(converter = CryptoConvertor.class)
-    @NotNull(message = "Введите фамилию, имя и отчество")
+    @NotBlank(message = "Введите фамилию, имя и отчество")
     private String fullName;
 
     @Column(name = "email")
     @Convert(converter = CryptoConvertor.class)
-    @NotNull(message = "Введите адрес электронной почты")
+    @NotBlank(message = "Введите адрес электронной почты")
     @Email(message = "Адрес электронной почты введён не верно")
     private String email;
 
@@ -40,17 +43,16 @@ public class Client {
 
     @Column(name = "passport_series")
     @Convert(converter = CryptoConvertor.class)
-    @NotNull(message = "Введите серию паспорта")
-    @Size(min = 4, max = 4, message = "Серия паспорта введена не правильно")
+    @Size(min = 4, max = 4, message = "Серия паспорта введена не правильно или отсутствует")
     private String passportSeries;
 
     @Column(name = "passport_id")
     @Convert(converter = CryptoConvertor.class)
-    @NotNull(message = "Введите номер паспорта")
-    @Size(min = 6, max = 6, message = "Номер паспорта введен не правильно")
+    @Size(min = 6, max = 6, message = "Номер паспорта введен не правильно или отсутствует")
     private String passportId;
 
     @Column(name = "dob")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dob;
 
     @OneToOne
@@ -59,7 +61,7 @@ public class Client {
 
     @Column(name = "registration")
     @Convert(converter = CryptoConvertor.class)
-    @NotNull(message = "Введите место регистрации")
+    @NotBlank(message = "Введите место регистрации")
     private String registration;
 
     @OneToOne
@@ -68,7 +70,7 @@ public class Client {
 
     @Column(name = "work_place")
     @Convert(converter = CryptoConvertor.class)
-    @NotNull(message = "Введите место работы")
+    @NotBlank(message = "Введите место работы")
     private String workPlace;
 
     @OneToOne
@@ -76,7 +78,7 @@ public class Client {
     private Position position;
 
     @Column(name = "experience")
-    @NotNull(message = "Введите опыт работы")
+    @Max(value = 45, message = "Опыт работы введён не верно")
     private int experience;
 
     @Column(name = "income")
@@ -95,6 +97,10 @@ public class Client {
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "client_id")
     private List<Credit> credits;
+
+    public int getExperience() {
+        return experience;
+    }
 
     //получение возраста клиента
     public double getAge() {

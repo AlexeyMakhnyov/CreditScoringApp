@@ -9,23 +9,43 @@
     <div class="container">
         <h1>Контактные данные</h1>
         <form action="#" th:action="@{/scoring/add_contact_details}" th:object="${client}" method="POST">
-            <label  for="fullName">Фамилия, имя и отчество</label>
-            <input class="form-control mb-4 col-4" onkeyup="this.value = this.value.replace(/[^а-яА-Я\s]/g, '')" type="text" th:field="*{fullName}"
-                   placeholder="Иванов Иван Иванович" id="fullName">
-            <div th:if = "${#fields.hasErrors('fullName')}" th:errors="*{fullName}"></div>
 
-            <label class="form-label" for="email">Электронная почта</label>
-            <input class="form-control mb-4 col-4" type="text" th:field="*{email}"
-                   placeholder="ivanov@gmail.com"  id="email">
-            <div th:if = "${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+            <div class="row">
+                <div class="col-md-8">
+                    <label class="form-label" for="fullName">Фамилия, имя и отчество</label>
+                    <input class="form-control mb-4 col-4" onkeyup="this.value = this.value.replace(/[^а-яА-Я\s]/g, '')" type="text" th:field="*{fullName}"
+                           placeholder="Иванов Иван Иванович" id="fullName">
+                    <div class="alert alert-warning" th:if = "${#fields.hasErrors('fullName')}" th:errors="*{fullName}"></div>
+                </div>
+            </div>
 
-            <label  class="form-label" for="phone">Номер телефона</label>
-            <input type="text" onkeyup="this.value = this.value.replace(/[^\d]/g,'')" th:field="*{phone}"
-                   placeholder="89209678190" class="form-control mb-4 col-4" id="phone">
-            <div th:if = "${#fields.hasErrors('phone')}" th:errors="*{phone}"></div>
+            <div class="row">
+                <div class="col-md-8">
+                    <label class="form-label" for="email">Электронная почта</label>
+                    <input class="form-control mb-4 col-4" type="text" th:field="*{email}"
+                           placeholder="ivanov@gmail.com"  id="email">
+                    <div class="alert alert-warning" th:if = "${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+                </div>
+            </div>
 
-            <button type="submit" class="btn btn-info col-2">Продолжить</button>
+            <div class="row">
+                <div class="col-md-8">
+                    <label  class="form-label" for="phone">Номер телефона</label>
+                    <input type="text" onkeyup="this.value = this.value.replace(/[^\d]/g,'')" th:field="*{phone}"
+                           placeholder="89209678190" class="form-control mb-4" id="phone">
+                    <div class="alert alert-warning" th:if = "${#fields.hasErrors('phone')}" th:errors="*{phone}"></div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6"></div>
+                <div class="col-md-2 text-end">
+                    <button type="submit" class="btn btn-info">Продолжить</button>
+                </div>
+            </div>
+
         </form>
     </div>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 </html>

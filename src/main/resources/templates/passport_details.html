@@ -9,32 +9,54 @@
 <div class="container">
     <h1>Паспортные данные</h1>
     <form action="#" th:action="@{/scoring/add_passport_details}" th:object="${client}" method="POST">
-        <label class="form-label" for="passportSeries">Серия паспорта</label>
-        <input type="text" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" th:field="*{passportSeries}" id="passportSeries"
-               class="form-control mb-4 col-4">
-        <div th:if = "${#fields.hasErrors('passportSeries')}" th:errors="*{passportSeries}"></div>
 
-        <label class="form-label" for="passportId">Номер паспорта</label>
-        <input type="text" onkeyup="this.value = this.value.replace(/[^\d]/g,'')" th:field="*{passportId}" id="passportId"
-               class="form-control mb-4 col-4">
-        <div th:if = "${#fields.hasErrors('passportId')}" th:errors="*{passportId}"></div>
+        <div class="row">
+            <div class="col-md-4">
+                <label class="form-label" for="passportSeries">Серия паспорта</label>
+                <input type="text" onkeyup="this.value = this.value.replace(/[^\d]/g,'');" th:field="*{passportSeries}" id="passportSeries"
+                       class="form-control mb-4">
+                <div class="alert alert-warning" th:if = "${#fields.hasErrors('passportSeries')}" th:errors="*{passportSeries}"></div>
+            </div>
 
-        <label class="form-label" for="dob">Дата рождения</label>
-<!--        /*date*/-->
-        <input type="text" th:field="*{dob}" id="dob"
-               placeholder="11/07/2000" class="form-control mb-4 col-4">
+            <div class="col-md-4">
+                <label class="form-label" for="passportId">Номер паспорта</label>
+                <input type="text" onkeyup="this.value = this.value.replace(/[^\d]/g,'')" th:field="*{passportId}" id="passportId"
+                       class="form-control  mb-4">
+                <div class="alert alert-warning" th:if = "${#fields.hasErrors('passportId')}" th:errors="*{passportId}"></div>
+            </div>
+        </div>
 
-        <label class="form-label" for="gender">Пол</label>
-        <select th:field="*{gender}" class="form-select mb-4 col-4" id="gender">
-            <option th:each="gen : ${gen}"
-                    th:value="${gen.getId()}" th:text="${gen.getGender()}"></option>
-        </select>
-        <label class="form-label" for="registration">Место регирстрации</label>
-        <input type="text" th:field="*{registration}"
-               placeholder="Место регистрации" class="form-control mb-4 col-4" id="registration">
-        <div th:if = "${#fields.hasErrors('registration')}" th:errors="*{registration}"></div>
+        <div class="row">
+            <div class="col-md-4">
+                <label class="form-label" for="dob">Дата рождения</label>
+                <input type="date" th:field="*{dob}" id="dob"
+                       placeholder="11.07.2000" class="form-control  mb-4">
+            </div>
 
-        <button type="submit" class="btn btn-info col-2">Продолжить</button>
+            <div class="col-md-4">
+                <label class="form-label" for="gender">Пол</label>
+                <select th:field="*{gender}" class="form-select  mb-4" id="gender">
+                    <option th:each="gen : ${gen}"
+                            th:value="${gen.getId()}" th:text="${gen.getGender()}"></option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8">
+                <label class="form-label" for="registration">Место регирстрации</label>
+                <input type="text" th:field="*{registration}"
+                       placeholder="Место регистрации" class="form-control  mb-4" id="registration">
+                <div class="alert alert-warning" th:if = "${#fields.hasErrors('registration')}" th:errors="*{registration}"></div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6"></div>
+                <div class="col-md-2 text-end">
+                    <button type="submit" class="btn btn-info">Продолжить</button>
+                </div>
+        </div>
     </form>
 </div>
 </body>

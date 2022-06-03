@@ -8,23 +8,29 @@
 <body>
 <div class="container">
     <h1>Результат</h1>
-    <div class="row">
-        <label class="form-check-label">Кредит с параметрами:</label>
-    </div>
-    <div class="row">
-        <label class="form-check-label" th:text="${'Сумма заёма:' + credit.getAmount()}"></label>
-    </div>
-    <div class="row">
-        <label class="form-check-label" th:text="${'Срок:' + credit.getTerm().getTerm()}"></label>
-    </div>
-    <div class="row">
-        <label class="form-check-label" th:text="${'Процентная ставка:' + credit.getRate().getRate()}"></label>
-    </div>
-    <div class="row">
-        <label class="form-check-label" th:text="${'Ежемесячный платёж:' + credit.getMonthlyPayment()}"></label>
-    </div>
-    <div class="row">
-        <label class="form-check-label" th:text="${result}"></label>
+    <div class="row col-md-8">
+    <table class="table table-bordered table-light">
+        <tr>
+            <th scope="col">Сумма заёма:</th>
+            <td th:text="${credit.getAmount() + ' ₽'}"></td>
+        </tr>
+        <tr>
+            <th scope="col">Срок:</th>
+            <td th:text="${credit.getTerm().getTerm()}"></td>
+        </tr>
+        <tr>
+            <th scope="col">Процентная ставка:</th>
+            <td th:text="${credit.getRate().getRate() + '%'}"></td>
+        </tr>
+        <tr>
+            <th scope="col">Ежемесячный платёж:</th>
+            <td th:text="${credit.getMonthlyPayment()  + ' ₽'}"></td>
+        </tr>
+        <tr>
+            <th scope="col">Результат:</th>
+            <td th:text="${result}"></td>
+        </tr>
+    </table>
     </div>
 </div>
 </body>

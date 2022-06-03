@@ -1,6 +1,5 @@
 package com.makhnyov.creditscoringapp.service;
 
-import com.makhnyov.creditscoringapp.model.Odds;
 import com.makhnyov.creditscoringapp.model.Rate;
 import com.makhnyov.creditscoringapp.repository.RateRepository;
 import org.springframework.beans.factory.annotation.Autowired;

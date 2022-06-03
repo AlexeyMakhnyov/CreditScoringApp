@@ -10,26 +10,40 @@
     <h1>Дополнительная информация</h1>
     <form action="#" th:action="@{/scoring/add_additional_inf}" th:object="${client}" method="POST">
         <div class="row">
-            <label class="form-check-label" for="marital">
-                Состоите в браке
-            </label>
-            <input class="form-check-input" type="checkbox" th:checked="*{marital}" th:field="*{marital}" id="marital">
+            <div class="col-md-4">
+                <div class="form-check">
+                    <input class="form-check-input mb-4" type="checkbox" th:checked="*{marital}" th:field="*{marital}" id="marital">
+                    <label class="form-check-label" for="marital">
+                        Состоите в браке
+                    </label>
+                </div>
+            </div>
         </div>
 
         <div class="row">
-            <label class="form-label" for="dependents">Количество иждивенцев</label>
-            <input type="text" onkeyup="this.value = this.value.replace(/[^\d]/g,'')" th:field="*{dependents}" id="dependents"
-                   placeholder="Наличие иждивенцев" class="form-control mb-4 col-4">
+            <div class="col-md-4">
+                <input class="form-check-input mb-4" type="checkbox" th:checked="*{ownHousing}" th:field="*{ownHousing}" id="ownHousing">
+                <label class="form-check-label" for="ownHousing">
+                    Наличие собственного жилья
+                </label>
+
+            </div>
         </div>
 
         <div class="row">
-            <label class="form-check-label" for="ownHousing">
-                Наличие собственного жилья
-            </label>
-            <input class="form-check-input mb-4 col-4" type="checkbox" th:checked="*{ownHousing}" th:field="*{ownHousing}" id="ownHousing">
+            <div class="col-md-4">
+                <label class="form-label" for="dependents">Количество иждивенцев</label>
+                <input type="text" onkeyup="this.value = this.value.replace(/[^\d]/g,'')" th:field="*{dependents}" id="dependents"
+                       placeholder="Наличие иждивенцев" class="form-control mb-4">
+            </div>
         </div>
 
-        <button type="submit" class="btn btn-info mb-4 col-2">Продолжить</button>
+        <div class="row">
+            <div class="col-md-6"></div>
+            <div class="col-md-2 text-end">
+                <button type="submit" class="btn btn-info">Продолжить</button>
+            </div>
+        </div>
     </form>
 </div>
 </body>

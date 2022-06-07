@@ -50,6 +50,7 @@ public class ScoringController {
         model.addAttribute("credit", new Credit());
         model.addAttribute("creditTerm", creditTerms);
         model.addAttribute("rt", rate);
+        model.addAttribute("client", new Client());
         return "loan_parameters";
     }
 
@@ -61,7 +62,7 @@ public class ScoringController {
         if (model.getAttribute("credit") == null) {
             return "redirect:/scoring/loan_parameters";
         }
-        model.addAttribute("client", new Client());
+        model.addAttribute("client");
         return "contact_details";
     }
 
@@ -126,7 +127,7 @@ public class ScoringController {
         model.addAttribute("credit");
         assert credit != null;
         model.addAttribute("result",
-                 credit.isApproved() ? "Одобрен" : "Отказан" );
+                 credit.isApproved() ? "Кредит одобрен" : "Кредит не одобрен" );
         return "result";
     }
 
@@ -163,7 +164,8 @@ public class ScoringController {
     public String addPassportDetails(@ModelAttribute @Valid Client client, BindingResult bindingResult,
                                      Model model) {
         //валидация формы
-        if (bindingResult.hasFieldErrors("passportSeries") || bindingResult.hasFieldErrors("passportId") || bindingResult.hasFieldErrors("registration")) {
+        if (bindingResult.hasFieldErrors("passportSeries") || bindingResult.hasFieldErrors("passportId") || bindingResult.hasFieldErrors("registration")
+        || bindingResult.hasFieldErrors("dob")) {
             model.addAttribute("client");
             List<Gender> genders = genderService.getAllGenders();
             model.addAttribute("gen", genders);

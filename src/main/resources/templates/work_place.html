@@ -9,7 +9,7 @@
 <div class="container">
     <h1>Место работы</h1>
     <form action="#" th:action="@{/scoring/add_work_place}" th:object="${client}" method="POST">
-
+        <hr class="row col-md-8">
         <div class="row">
             <div class="col-md-8">
                 <label class="form-label" for="workPlace">Место работы</label>
@@ -55,9 +55,11 @@
 
 
         <div class="row">
-            <div class="col-md-6"></div>
-            <div class="col-md-2 text-end">
-                <button type="submit" class="btn btn-info">Продолжить</button>
+            <div class="col-md-4 text-start">
+                <a th:href="@{/scoring/passport_details}" class="btn btn-primary" role="button" aria-pressed="true">Вернуться</a>
+            </div>
+            <div class="col-md-4 text-end">
+                <button type="submit" class="btn btn-primary">Продолжить</button>
             </div>
         </div>
     </form>

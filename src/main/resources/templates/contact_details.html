@@ -9,7 +9,7 @@
     <div class="container">
         <h1>Контактные данные</h1>
         <form action="#" th:action="@{/scoring/add_contact_details}" th:object="${client}" method="POST">
-
+            <hr class="row col-md-8">
             <div class="row">
                 <div class="col-md-8">
                     <label class="form-label" for="fullName">Фамилия, имя и отчество</label>
@@ -32,15 +32,20 @@
                 <div class="col-md-8">
                     <label  class="form-label" for="phone">Номер телефона</label>
                     <input type="text" onkeyup="this.value = this.value.replace(/[^\d]/g,'')" th:field="*{phone}"
-                           placeholder="89209678190" class="form-control mb-4" id="phone">
+                           placeholder="88005553535" class="form-control mb-4" id="phone">
                     <div class="alert alert-warning" th:if = "${#fields.hasErrors('phone')}" th:errors="*{phone}"></div>
                 </div>
             </div>
 
             <div class="row">
-                <div class="col-md-6"></div>
+                <div class="col-md-2">
+                    <div class="col-md-4 text-start">
+                        <a th:href="@{/scoring/loan_parameters}" class="btn btn-primary" role="button" aria-pressed="true">Вернуться</a>
+                    </div>
+                </div>
+                <div class="col-md-4"></div>
                 <div class="col-md-2 text-end">
-                    <button type="submit" class="btn btn-info">Продолжить</button>
+                    <button type="submit" class="btn btn-primary">Продолжить</button>
                 </div>
             </div>
 

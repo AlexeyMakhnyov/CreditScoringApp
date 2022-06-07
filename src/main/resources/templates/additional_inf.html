@@ -9,6 +9,7 @@
 <div class="container">
     <h1>Дополнительная информация</h1>
     <form action="#" th:action="@{/scoring/add_additional_inf}" th:object="${client}" method="POST">
+        <hr class="row col-md-8">
         <div class="row">
             <div class="col-md-4">
                 <div class="form-check">
@@ -39,9 +40,11 @@
         </div>
 
         <div class="row">
-            <div class="col-md-6"></div>
-            <div class="col-md-2 text-end">
-                <button type="submit" class="btn btn-info">Продолжить</button>
+            <div class="col-md-4 text-start">
+                <a th:href="@{/scoring/work_place}" class="btn btn-primary" role="button" aria-pressed="true">Вернуться</a>
+            </div>
+            <div class="col-md-4 text-end">
+                <button type="submit" class="btn btn-primary">Продолжить</button>
             </div>
         </div>
     </form>

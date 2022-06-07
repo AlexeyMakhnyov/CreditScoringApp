@@ -11,7 +11,7 @@
     <div class="row col-md-8">
     <table class="table table-bordered table-light">
         <tr>
-            <th scope="col">Сумма заёма:</th>
+            <th scope="col">Сумма займа:</th>
             <td th:text="${credit.getAmount() + ' ₽'}"></td>
         </tr>
         <tr>
@@ -27,7 +27,7 @@
             <td th:text="${credit.getMonthlyPayment()  + ' ₽'}"></td>
         </tr>
         <tr>
-            <th scope="col">Результат:</th>
+            <th scope="col">Кредит:</th>
             <td th:text="${result}"></td>
         </tr>
     </table>

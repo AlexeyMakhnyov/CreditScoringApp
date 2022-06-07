@@ -43,15 +43,16 @@ public class Client {
 
     @Column(name = "passport_series")
     @Convert(converter = CryptoConvertor.class)
-    @Size(min = 4, max = 4, message = "Серия паспорта введена не правильно или отсутствует")
+    @Size(min = 4, max = 4, message = "Серия паспорта не введена")
     private String passportSeries;
 
     @Column(name = "passport_id")
     @Convert(converter = CryptoConvertor.class)
-    @Size(min = 6, max = 6, message = "Номер паспорта введен не правильно или отсутствует")
+    @Size(min = 6, max = 6, message = "Номер паспорта не введён")
     private String passportId;
 
     @Column(name = "dob")
+    @NotNull(message = "Введите дату рождения")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dob;
 

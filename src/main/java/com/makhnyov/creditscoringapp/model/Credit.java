@@ -21,10 +21,10 @@ public class Credit {
     private long id;
 
     @Column(name = "amount")
-    @NotNull(message = "Введите сумму заёма")
-    @DecimalMin(value = "10000", message = "Слишком маленькая сумма заёма (минимальная сумма 10000)")
-    @DecimalMax(value = "1000000", message = "Слишком большая сумма заёма (максимальная сумма 1000000")
-    @Digits(integer=6, fraction=2)
+    @NotNull(message = "Введите сумму займа")
+    @DecimalMin(value = "10000", message = "Слишком маленькая сумма займа (минимальная сумма 10000)")
+    @DecimalMax(value = "1000000", message = "Слишком большая сумма займа (максимальная сумма 1000000)")
+    @Digits(integer=7, fraction=2)
     private BigDecimal amount;
 
     @Column(name = "monthly_payment")

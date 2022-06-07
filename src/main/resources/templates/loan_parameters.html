@@ -9,16 +9,17 @@
 <div class="container">
     <h1>Параметры кредита</h1>
     <form action="#" th:action="@{/scoring/add_loan_parameters}" method="POST">
+        <hr class="row col-md-8">
         <div class="row">
             <div class="col-md-5">
                 <label class="form-label" for="amount">Сумма кредита</label>
                 <input type="text" onkeyup="this.value = this.value.replace(/[^\d]/g,'')" th:field="*{credit.amount}" class="form-control mb-4 col-4" id="amount">
-                <span class="alert alert-warning" th:if = "${#fields.hasErrors('credit.amount')}" th:errors="*{credit.amount}"></span>
+                <div class="alert alert-warning" th:if = "${#fields.hasErrors('credit.amount')}" th:errors="*{credit.amount}"></div>
             </div>
             <div class="col-md-3">
                 <label class="form-label" for="term">Срок</label>
                 <select th:field="*{credit.term}" class="form-select mb-4 col-4" id="term">
-                    <option th:each="creditTerm : ${creditTerm}"x
+                    <option th:each="creditTerm : ${creditTerm}"
                             th:value="${creditTerm.getId()}" th:text="${creditTerm.getTerm()}"></option>
                 </select>
             </div>
@@ -29,11 +30,10 @@
             </div>
         </div>
         <input type="hidden" th:value="${rt.getId()}" th:attr="object='credit',name='rate'">
-
         <div class="row">
             <div class="col-md-6"></div>
             <div class="col-md-2 text-end">
-                <button type="submit" class="btn btn-info">Продолжить</button>
+                <button type="submit" class="btn btn-primary">Продолжить</button>
             </div>
         </div>
     </form>

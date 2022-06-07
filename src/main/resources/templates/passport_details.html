@@ -9,7 +9,7 @@
 <div class="container">
     <h1>Паспортные данные</h1>
     <form action="#" th:action="@{/scoring/add_passport_details}" th:object="${client}" method="POST">
-
+        <hr class="row col-md-8">
         <div class="row">
             <div class="col-md-4">
                 <label class="form-label" for="passportSeries">Серия паспорта</label>
@@ -31,6 +31,7 @@
                 <label class="form-label" for="dob">Дата рождения</label>
                 <input type="date" th:field="*{dob}" id="dob"
                        placeholder="11.07.2000" class="form-control  mb-4">
+                <div class="alert alert-warning" th:if = "${#fields.hasErrors('dob')}" th:errors="*{dob}"></div>
             </div>
 
             <div class="col-md-4">
@@ -52,10 +53,12 @@
         </div>
 
         <div class="row">
-            <div class="col-md-6"></div>
-                <div class="col-md-2 text-end">
-                    <button type="submit" class="btn btn-info">Продолжить</button>
-                </div>
+            <div class="col-md-4 text-start">
+                <a th:href="@{/scoring/contact_details}" class="btn btn-primary" role="button" aria-pressed="true">Вернуться</a>
+            </div>
+            <div class="col-md-4 text-end">
+                <button type="submit" class="btn btn-primary">Продолжить</button>
+            </div>
         </div>
     </form>
 </div>
